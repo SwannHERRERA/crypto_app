@@ -1,10 +1,13 @@
 <template>
-  <div>
+  <div class="min-h-screen">
     <nuxt />
   </div>
 </template>
 
 <style>
+body {
+  background-color: #ebf4ff;
+}
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
