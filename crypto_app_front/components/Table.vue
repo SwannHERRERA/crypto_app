@@ -8,6 +8,13 @@
           <thead class="bg-gray-200">
             <tr>
               <th
+                v-for="(key, index) in Object.keys(data)"
+                :key="index"
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+              >
+                {{ key }}
+              </th>
+              <!-- <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >
                 Name
@@ -27,11 +34,11 @@
               >
                 Role
               </th>
-              <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+              <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th> -->
             </tr>
           </thead>
-          <tbody class="bg-white">
-            <tr>
+          <tbody v-if="data.email[0] !== undefined" class="bg-white">
+            <tr v-for="i in data.email[0].length" :key="i">
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
@@ -43,10 +50,11 @@
                   </div>
                   <div class="ml-4">
                     <div class="text-sm leading-5 font-medium text-gray-900">
-                      Bernard Lane
+                      {{ data.LastName[i] + ' ' + data.FirstName[i] }}
                     </div>
                     <div class="text-sm leading-5 text-gray-500">
-                      bernardlane@example.com
+                      {{ data.email[i] }}
+                      {{ i }}
                     </div>
                   </div>
                 </div>
@@ -79,7 +87,7 @@
                 >
               </td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
@@ -222,10 +230,24 @@
                   >Edit</a
                 >
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
+  mounted() {
+    console.log(this.data.length)
+  }
+}
+</script>
