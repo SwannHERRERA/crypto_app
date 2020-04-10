@@ -6,6 +6,7 @@
 
 <script>
 import Table from '~/components/molecules/Table.vue'
+import ServiceUser from '~/services/user'
 
 export default {
   components: {
@@ -13,6 +14,7 @@ export default {
   },
   data: () => {
     return {
+      users: null,
       tableData: {
         header: ['email', 'FirstName', 'LastName'],
         body_data: [
@@ -34,6 +36,9 @@ export default {
         ]
       }
     }
+  },
+  async mounted() {
+    this.user = await ServiceUser.getAll()
   }
 }
 </script>
