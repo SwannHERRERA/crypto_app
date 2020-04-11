@@ -9,15 +9,15 @@ export default {
     })
   },
   get(userId) {
-    return axios.get(`api/users/${userId}`)
+    return axios.get(`api/user/${userId}`)
   },
   getAll() {
-    return axios.get('api/users/listing')
+    return axios.get('api/user/listing')
   },
   post(user) {
-    return axios.post('api/users', user)
+    return axios.post('api/user', user)
   },
   put(user) {
-    return axios.put(`api/users/${user.id}`, user)
+    return axios.put(`api/user/${user.id}`, user)
   }
 }

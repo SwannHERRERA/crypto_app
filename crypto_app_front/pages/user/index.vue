@@ -1,6 +1,6 @@
 <template>
   <div class="m-24">
-    <Table :data="tableData" />
+    <Table :data="users" :header="tableHeader" />
   </div>
 </template>
 
@@ -15,30 +15,12 @@ export default {
   data: () => {
     return {
       users: null,
-      tableData: {
-        header: ['email', 'FirstName', 'LastName'],
-        body_data: [
-          {
-            email: 'swann@devloup.dev',
-            FirstName: 'Swann',
-            LastName: 'HERRERA'
-          },
-          {
-            email: 'swann@graines-octets.com',
-            FirstName: 'Swann GO',
-            LastName: 'HERRERA'
-          },
-          {
-            email: 'wilk65537@gmail.com',
-            FirstName: 'wilk',
-            LastName: '65537'
-          }
-        ]
-      }
+      tableHeader: ['email', 'FirstName', 'LastName']
     }
   },
   async mounted() {
-    this.user = await ServiceUser.getAll()
+    const response = await ServiceUser.getAll()
+    this.users = response.data.users
   }
 }
 </script>

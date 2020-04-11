@@ -8,7 +8,7 @@
           <thead class="bg-gray-200">
             <tr>
               <th
-                v-for="(key, index) in data.header"
+                v-for="(key, index) in header"
                 :key="index"
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >
@@ -37,8 +37,8 @@
               <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th> -->
             </tr>
           </thead>
-          <tbody v-if="data.body_data !== undefined" class="bg-white">
-            <tr v-for="(row, i) in data.body_data" :key="i">
+          <tbody v-if="data !== undefined" class="bg-white">
+            <tr v-for="(row, i) in data" :key="i">
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
@@ -50,7 +50,7 @@
                   </div>
                   <div class="ml-4">
                     <div class="text-sm leading-5 font-medium text-gray-900">
-                      {{ row.LastName + ' ' + row.FirstName }}
+                      {{ row.lastName + ' ' + row.firstName }}
                     </div>
                     <div class="text-sm leading-5 text-gray-500">
                       {{ row.email }}
@@ -241,7 +241,11 @@
 export default {
   props: {
     data: {
-      type: Object,
+      type: null,
+      required: true
+    },
+    header: {
+      type: Array,
       required: true
     }
   }
