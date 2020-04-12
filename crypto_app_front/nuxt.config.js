@@ -57,10 +57,13 @@ export default {
   proxy: {
     '/api/': { target: 'http://localhost:8003', pathRewrite: { '^/api/': '' } }
   },
+  headers: { 'Content-Type': 'application/json' },
+
   /*
    ** Build configuration
    */
   build: {
+    transpile: ['vee-validate/dist/rules'],
     /*
      ** You can extend webpack config here
      */

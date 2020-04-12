@@ -15,3 +15,11 @@ exports.insert = async (req, res, next) => {
   await user.save()
   return res.status(201).json({ user: user })
 }
+
+exports.login = (req, res, next) => {
+  return res.status(200).json({
+    token: 'ozerofafne',
+    message: "Ceci est une version de test le backend n'est pas opérationnel",
+    req: req.data,
+  })
+}

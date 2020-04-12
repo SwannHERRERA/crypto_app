@@ -9,4 +9,6 @@ router.get('/listing', userController.listing)
 
 router.post('/', userController.insert)
 
+router.post('/login', userController.login)
+
 module.exports = router

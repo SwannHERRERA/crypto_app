@@ -1,20 +1,24 @@
 <template>
   <div class="container mx-auto h-screen">
     <div class="flex justify-center items-center h-screen">
-      <Card>
+      <Card width="w-5/12">
         <h1 class="font-title font-light text-4xl title">Login</h1>
         <form>
           <Form-group
             id="email"
+            v-model="email"
             type="email"
             placeholder="swann@devloup.dev"
             label="Email"
+            rules="required|email"
           />
           <Form-group
             id="password"
+            v-model="password"
             type="password"
             placeholder="********"
             label="Password"
+            rules="required"
           />
           <nuxt-link
             to="/user/password-lost"
@@ -25,6 +29,7 @@
             <button
               type="button"
               class="bg-transparent hover:bg-indigo-500 text-indigo-700 font-semibold hover:text-white py-2 px-4 border border-indigo-500 hover:border-transparent rounded"
+              @click="login"
             >
               Login
             </button>
@@ -36,6 +41,8 @@
 </template>
 
 <script>
+import Axios from 'axios'
+
 import FormGroup from '~/components/molecules/FromGroup.vue'
 import Card from '~/components/atomes/Card.vue'
 
@@ -43,6 +50,21 @@ export default {
   components: {
     'Form-group': FormGroup,
     Card
+  },
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    async login(e) {
+      const response = await Axios.post('/api/user/login', {
+        email: this.email,
+        password: this.password
+      })
+      console.log(response)
+    }
   }
 }
 </script>
