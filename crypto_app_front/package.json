@@ -24,7 +24,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "nuxt": "^2.0.0",
-    "vee-validate": "^3.2.5"
+    "vuelidate": "^0.7.5"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^1.0.0",
